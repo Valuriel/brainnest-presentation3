@@ -48,5 +48,5 @@ const game = () => {
         return 'Draw game! Maybe next round shows a winner!'
     }
 }
-//displaying the games' scores tot he console
+//displaying the games' scores to the console
 console.log(game());
