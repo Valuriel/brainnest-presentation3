@@ -4,7 +4,7 @@ let computerScore = 0;
 
 // Function that determines the computer's play behaviour
 const computerPlay = () => {  
-    const choices=["rock","paper","scissors"]; 
+    const choices=["rock","paper","scissors"];
     return choices[Math.floor(Math.random() * choices.length)]
 };
 
@@ -35,8 +35,21 @@ const playRound = (playerSelection,computerSelection) => {
 
 // Game loop for 5 rounds
 const game = () => {
+    let playerSelection;
     for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt('Take your pick!', 'Rock, Paper, Scissors').toLowerCase()
+
+        let accepted = false;
+
+        while (!accepted) {
+                playerSelection = prompt('Take your pick!', 'Rock, Paper, Scissors').toLowerCase()
+
+            if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
+                accepted = true
+            } else {
+                console.log('Invalid input!') 
+            }
+        }
+        
         const computerSelection = computerPlay()
         playRound(playerSelection, computerSelection)
     }
@@ -48,5 +61,5 @@ const game = () => {
         return 'Draw game! Maybe next round shows a winner!'
     }
 }
-//displaying the games' scores to the console
+
 console.log(game());
